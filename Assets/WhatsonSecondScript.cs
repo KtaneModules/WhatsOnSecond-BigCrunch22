@@ -112,6 +112,10 @@ public class WhatsonSecondScript : MonoBehaviour
     int moduleId;
     private bool ModuleSolved;
 	
+	//Souvenir Dedicated
+	string[] Answers = new string[2];
+	string[] AnswerColors = new string[2];
+	
 	void Active()
 	{
 		moduleId = moduleIdCounter++;
@@ -187,6 +191,9 @@ public class WhatsonSecondScript : MonoBehaviour
 					}
 					else
 					{
+						Answers[Stage - 1] = TrueAnswer;
+						string[] Colors = {"Red", "Green", "Blue", "Yellow", "Magenta", "Cyan"};
+						AnswerColors[Stage - 1] = Colors[Color];
 						Debug.LogFormat("[What's on Second #{0}] You pressed the correct label. Moving forward to another stage.", moduleId);
 						StartCoroutine(NewStage(false));
 					}

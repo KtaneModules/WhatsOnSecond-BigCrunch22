@@ -191,7 +191,7 @@ public class WhatsonSecondScript : MonoBehaviour
 					}
 					else
 					{
-						Answers[Stage - 1] = TrueAnswer;
+						Answers[Stage - 1] = Phrase[DisplayNumber];
 						string[] Colors = {"Red", "Green", "Blue", "Yellow", "Magenta", "Cyan"};
 						AnswerColors[Stage - 1] = Colors[Color];
 						Debug.LogFormat("[What's on Second #{0}] You pressed the correct label. Moving forward to another stage.", moduleId);

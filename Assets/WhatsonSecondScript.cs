@@ -116,7 +116,7 @@ public class WhatsonSecondScript : MonoBehaviour
 	string[] Answers = new string[2];
 	string[] AnswerColors = new string[2];
 	
-	void Active()
+	void Awake()
 	{
 		moduleId = moduleIdCounter++;
 	}

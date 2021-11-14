@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using KModkit;
-using Newtonsoft.Json;
 
 public class WhatsonSecondScript : MonoBehaviour
 {
@@ -102,7 +100,7 @@ public class WhatsonSecondScript : MonoBehaviour
 		new int[] {4, 1, 6, 6, 0, 6}
 	};
 	
-    int DisplayNumber, Color, Solution, Stage = 0;
+    int DisplayNumber, Color, Stage = 0;
 	int[] ButtonColor = new int[6];
 	bool IsActivated = false;
 	string TrueAnswer = "";
@@ -160,7 +158,7 @@ public class WhatsonSecondScript : MonoBehaviour
 	void PressButton(int Collect)
 	{
 		buttons[Collect].AddInteractionPunch(0.3f);
-		Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, transform);
+		Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, buttons[Collect].transform);
 		if (!ModuleSolved)
 		{
 			if (IsActivated)
@@ -374,4 +372,21 @@ public class WhatsonSecondScript : MonoBehaviour
 			buttons[Int32.Parse(parameters[1]) - 1].OnInteract();
         }
 	}
+
+	IEnumerator TwitchHandleForcedSolve()
+    {
+		for (int i = Stage; i < 3; i++)
+        {
+			while (!IsActivated) yield return true;
+			for (int j = 0; j < 6; j++)
+            {
+				TextMesh buttonTextMesh = buttons[j].GetComponentInChildren<TextMesh>();
+				if (buttonTextMesh.text == TrueAnswer)
+                {
+					buttons[j].OnInteract();
+					break;
+                }
+			}
+		}
+    }
 }

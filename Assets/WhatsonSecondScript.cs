@@ -10,6 +10,7 @@ public class WhatsonSecondScript : MonoBehaviour
 	public KMAudio Audio;
     public KMBombInfo Bomb;
 	public KMBombModule Module;
+	public KMRuleSeedable RuleSeed;
 	
 	public KMSelectable[] buttons;
 	public Transform[] LEDs;
@@ -121,6 +122,44 @@ public class WhatsonSecondScript : MonoBehaviour
 	
 	void Start()
 	{
+		var RuleSeedRNG = RuleSeed.GetRNG();
+		Debug.LogFormat("[What's on Second #{0}] Ruleseed Number: {1}", moduleId, RuleSeedRNG.Seed.ToString());
+		Debug.LogFormat("[What's on Second #{0}] ---------------------------------------------", moduleId);
+		if (RuleSeedRNG.Seed != 1)
+		{
+			int[] NumberDistribution = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+			int[] ListDistribution = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9};
+			RuleSeedRNG.ShuffleFisherYates(NumberDistribution);
+			for (int x = 0; x < DisplayPosition.Length; x++)
+			{
+				for (int y = 0; y < DisplayPosition[x].Length; y++)
+				{
+					DisplayPosition[x][y] = NumberDistribution[(x*50)+y];
+				}
+			}
+			RuleSeedRNG.ShuffleFisherYates(NumberDistribution);
+			for (int x = 0; x < ColorPosition.Length; x++)
+			{
+				for (int y = 0; y < ColorPosition[x].Length; y++)
+				{
+					ColorPosition[x][y] = NumberDistribution[(x*50)+y];
+				}
+			}
+			RuleSeedRNG.ShuffleFisherYates(ListDistribution);
+			for (int x = 0; x < Correspondance.Length; x++)
+			{
+				for (int y = 0; y < Correspondance[x].Length; y++)
+				{
+					Correspondance[x][y] = ListDistribution[(x*6)+y];
+				}
+			}
+			for (int x = 0; x < ShufflePlay.Length; x++)
+			{
+				string[] Keywords = {"BLANK", "C", "CEE", "DISPLAY", "DONE", "EMPTY", "ERROR", "FIRST", "GOT IT", "HOLD", "HOLD ON", "LEAD", "LED", "LEED", "LEFT", "LIKE", "LOUDER", "MIDDLE", "NEXT", "NO", "NONE", "NOTHING", "OKAY", "PRESS", "READ", "READY", "RED", "REED", "REPEAT", "RIGHT", "SAYS", "SEE", "SURE", "THEIR", "THERE", "THEY ARE", "THEY’RE", "U", "UHHH", "UH HUH", "UH UH", "UR", "WAIT", "WHAT", "WHAT?", "YES", "YOU", "YOU ARE", "YOUR", "YOU’RE"};
+				RuleSeedRNG.ShuffleFisherYates(Keywords);
+				ShufflePlay[x] = Keywords;
+			}
+		}
 		Init();
 		Module.OnActivate += ActivateModule;
 	}

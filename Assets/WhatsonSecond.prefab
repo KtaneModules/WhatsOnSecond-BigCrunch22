@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 114415958629190992}
   - component: {fileID: 114730272879712818}
   - component: {fileID: 114190650020414792}
+  - component: {fileID: 114017418460267656}
   m_Layer: 0
   m_Name: WhatsonSecond
   m_TagString: Untagged
@@ -2920,6 +2921,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HighlightScale: {x: 1, y: 1, z: 1}
   OutlineAmount: 0
+--- !u!114 &114017418460267656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1332326954258132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf69c2de51bd3c43bbd9bc22578ee08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seed: 1
 --- !u!114 &114018008783506850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3077,6 +3090,7 @@ MonoBehaviour:
   Audio: {fileID: 114415958629190992}
   Bomb: {fileID: 114730272879712818}
   Module: {fileID: 114492085643241712}
+  RuleSeed: {fileID: 114017418460267656}
   buttons:
   - {fileID: 114268498856339522}
   - {fileID: 114490164541467212}
